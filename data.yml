@@ -1,0 +1,178 @@
+title: Our Nashville Favorites
+subtitle: A running list of the stuff we actually love doing around town. No fluff, just the good stuff.
+footer: Made with love from Nashville 🎵
+
+sections:
+  - name: Food
+    emoji: "🍽️"
+    items:
+      - title: Kisser
+        description: Japanese comfort food in East Nash. Michelin Bib Gourmand. Walk in only for lunch so get there early.
+        map: https://www.google.com/maps/search/?api=1&query=Kisser+Nashville+TN
+        lat: 36.1743
+        lng: -86.7634
+      - title: Babychan
+        description: Japanese French bakery and cafe from the same Kisser team. Over in Germantown at the Neuhoff development.
+        map: https://www.google.com/maps/search/?api=1&query=Babychan+Nashville+TN
+        lat: 36.1828
+        lng: -86.7873
+      - title: Sho Pizza Bar
+        description: Sean Brock's wood fired neo Neapolitan pizza in East Nash. The dough is cold fermented for three days and it shows.
+        map: https://www.google.com/maps/search/?api=1&query=Sho+Pizza+Bar+Nashville+TN
+        lat: 36.1762
+        lng: -86.7556
+      - title: The Butter Milk Ranch
+        description: Bakery and brunch in 12 South. Get there early because it gets packed. The pastries alone are worth it.
+        map: https://www.google.com/maps/search/?api=1&query=The+Butter+Milk+Ranch+Nashville+TN
+        lat: 36.1215
+        lng: -86.7917
+      - title: Folk
+        description: Chef Philip Krajeck (of Rolf & Daughters) does seasonal, produce driven food and naturally leavened pizzas in East Nash. James Beard semifinalist and Bon Appetit top 50. Reservations recommended.
+        map: https://www.google.com/maps/search/?api=1&query=Folk+Restaurant+Nashville+TN
+        lat: 36.1895
+        lng: -86.7570
+      - title: Lockeland Table
+        description: East Nashville community kitchen and bar. James Beard nominated. Southern dishes, wood fired pizzas, and locally sourced everything. Been a neighborhood staple since 2012.
+        map: https://www.google.com/maps/search/?api=1&query=Lockeland+Table+Nashville+TN
+        lat: 36.1740
+        lng: -86.7527
+      - title: Urban Grub
+        description: Casual fine dining in a converted car wash in 12 South. Fresh shucked oysters, house made pasta, smoked meats, and a great beer garden out back.
+        map: https://www.google.com/maps/search/?api=1&query=Urban+Grub+Nashville+TN
+        lat: 36.1210
+        lng: -86.7905
+      - title: St. Vito Focacceria
+        description: Sicilian street food in the Gulch. Chef Michael Hanna's sfincione (Sicilian style pizza) is a Michelin Bib Gourmand. Menu changes almost daily. Everything made in house.
+        map: https://www.google.com/maps/search/?api=1&query=St.+Vito+Focacceria+Nashville+TN
+        lat: 36.1515
+        lng: -86.7825
+      - title: Ladybird Taco
+        description: Austin style breakfast tacos on house made tortillas with full barista coffee service. Multiple locations in 12 South, East Nash, and the Gulch. Voted best veggie taco in Nashville.
+        map: https://www.google.com/maps/search/?api=1&query=Ladybird+Taco+Nashville+TN
+        lat: 36.1200
+        lng: -86.7940
+      - title: Red Headed Stranger
+        description: Tex Mex from the Butcher & Bee team. House made flour tortillas, Hatch green chiles, chopped brisket tacos. Named after the Willie Nelson album. There will be a line.
+        map: https://www.google.com/maps/search/?api=1&query=Redheaded+Stranger+Nashville+TN
+        lat: 36.1920
+        lng: -86.7680
+      - title: VN Pho & Deli
+        description: Family owned Vietnamese spot on Charlotte Pike. Best pho in Nashville, everything made from scratch including the chili oil. Cash only (ATM on site). Closed Tue and Wed.
+        map: https://www.google.com/maps/search/?api=1&query=VN+Pho+%26+Deli+Nashville+TN
+        lat: 36.1430
+        lng: -86.8760
+      - title: Benji's Bagels
+        description: Hand rolled, kettle boiled bagels and house made schmears from a couple who spent a decade in Manhattan restaurants. Locations in West Nash and East Nash.
+        map: https://www.google.com/maps/search/?api=1&query=Benji's+Bagel+Nashville+TN
+        lat: 36.1490
+        lng: -86.8570
+      - title: Cafe Babu
+        description: Indian inspired coffee and cocktail spot in Chestnut Hill. Masala chai, cardamom lattes, and fluffy pastries by day. Wine and cocktails Thursday through Saturday evenings. Beautiful space.
+        map: https://www.google.com/maps/search/?api=1&query=Cafe+Babu+Nashville+TN
+        lat: 36.1440
+        lng: -86.7780
+      - title: Baja Burrito
+        description: No frills build your own burrito shop in Berry Hill. Been around since 2000. Great fish tacos and barbacoa. Fast, cheap, and consistently solid.
+        map: https://www.google.com/maps/search/?api=1&query=Baja+Burrito+Nashville+TN
+        lat: 36.1190
+        lng: -86.7830
+      - title: Edley's BBQ
+        description: Nashville's favorite BBQ. Meats smoked low and slow over Southern white oak. The brisket and mac and cheese are the move. Multiple locations, flagship is in 12 South.
+        map: https://www.google.com/maps/search/?api=1&query=Edley's+BBQ+Nashville+TN
+        lat: 36.1228
+        lng: -86.7898
+
+  - name: Hot Chicken
+    emoji: "🔥"
+    items:
+      - title: Prince's Hot Chicken
+        description: The original. Been around over 80 years. This is where Nashville hot chicken started. Multiple locations around town.
+        map: https://www.google.com/maps/search/?api=1&query=Prince's+Hot+Chicken+Nashville+TN
+        lat: 36.1972
+        lng: -86.7803
+      - title: Hattie B's
+        description: The crowd favorite. Multiple locations. There will be a line but it moves fast.
+        map: https://www.google.com/maps/search/?api=1&query=Hattie+B's+Hot+Chicken+Nashville+TN
+        lat: 36.1528
+        lng: -86.8023
+
+  - name: Coffee
+    emoji: "☕"
+    items:
+      - title: Elegy Coffee
+        description: This is our spot. The draft cold brew is incredible and you gotta try the Honey Bear (cold brew, oat milk, burnt honey, cinnamon, maple syrup). They've got 4 locations now in East Nash, Germantown, Downtown, and WeHo.
+        note: "Fun fact: same owners as The Fox Bar"
+        map: https://www.google.com/maps/search/?api=1&query=Elegy+Coffee+Nashville+TN
+        lat: 36.1748
+        lng: -86.7580
+
+  - name: Drinks
+    emoji: "🍸"
+    items:
+      - title: Attaboy
+        description: Speakeasy in East Nash. No menu. You tell the bartender what you're into and they make something for you. No reservations, first come first served, parties of 6 and under.
+        map: https://www.google.com/maps/search/?api=1&query=Attaboy+Nashville+TN
+        lat: 36.1744
+        lng: -86.7597
+      - title: The Fox Bar & Cocktail Club
+        description: Intimate little craft cocktail bar with Art Deco vibes, also East Nash. Made Food & Wine's top 10 best bars in the US. The rotating monthly menu is always interesting.
+        map: https://www.google.com/maps/search/?api=1&query=The+Fox+Bar+%26+Cocktail+Club+Nashville+TN
+        lat: 36.1747
+        lng: -86.7580
+      - title: Greenhouse Bar
+        description: Hidden gem in Green Hills tucked inside an actual functioning greenhouse. Deli by day, bar by night. Creative cocktails, local brews, fire pit out back. 21+ after 8pm.
+        map: https://www.google.com/maps/search/?api=1&query=Greenhouse+Bar+Nashville+TN
+        lat: 36.1070
+        lng: -86.8170
+      - title: Bad Idea
+        description: Wine bar and restaurant in a converted church in East Nash. Laotian inspired food with French technique. NY Times top 50 restaurants in America. Michelin recognized. Haven't been yet but it's on the list.
+        map: https://www.google.com/maps/search/?api=1&query=Bad+Idea+Nashville+TN
+        lat: 36.1750
+        lng: -86.7530
+
+  - name: Outdoors
+    emoji: "🌳"
+    items:
+      - title: Radnor Lake State Park
+        description: Beautiful 1,300+ acre nature preserve with hiking trails around an 85 acre lake. Tons of wildlife. About 10 miles south of downtown. Day use only, no dogs on most trails.
+        map: https://www.google.com/maps/search/?api=1&query=Radnor+Lake+State+Park+Nashville+TN
+        lat: 36.0630
+        lng: -86.8098
+
+  - name: Sightseeing
+    emoji: "🏛️"
+    items:
+      - title: The Parthenon
+        description: Full scale replica of the Greek original sitting in the middle of Centennial Park. 42 ft Athena statue inside. The park itself is great for walking around.
+        map: https://www.google.com/maps/search/?api=1&query=The+Parthenon+Nashville+TN
+        lat: 36.1498
+        lng: -86.8133
+    callout: "⚠️ Heads up: the Parthenon interior is closed until late June 2026 for HVAC work. The exterior and Centennial Park are still open and worth visiting."
+
+  - name: Neighborhoods to Walk Around
+    emoji: "🏘️"
+    items:
+      - title: 12 South
+        description: Walkable strip with boutiques, murals (the I Believe in Nashville wall), and great food everywhere. This is where Butter Milk Ranch is.
+        map: https://www.google.com/maps/search/?api=1&query=12+South+Nashville+TN
+        lat: 36.1215
+        lng: -86.7917
+      - title: Germantown
+        description: Historic area with incredible restaurants, Nashville Farmers' Market, and the Neuhoff development where Babychan is. One of the oldest neighborhoods in town.
+        map: https://www.google.com/maps/search/?api=1&query=Germantown+Nashville+TN
+        lat: 36.1828
+        lng: -86.7873
+
+  - name: Day Trips
+    emoji: "🚗"
+    items:
+      - title: Cheekwood Estate & Gardens
+        description: 55 acre botanical garden, art museum, and historic mansion. Their spring bloom festival usually runs through April with 250k flowers. About 15 min from downtown.
+        map: https://www.google.com/maps/search/?api=1&query=Cheekwood+Estate+%26+Gardens+Nashville+TN
+        lat: 36.0959
+        lng: -86.8638
+      - title: Downtown Franklin
+        description: About 30 min south. Super charming Main Street with boutiques, antiques, and great Southern food. Easy half day trip. Free parking garages downtown.
+        map: https://www.google.com/maps/search/?api=1&query=Downtown+Franklin+TN
+        lat: 35.9251
+        lng: -86.8689

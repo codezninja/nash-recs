@@ -1,0 +1,73 @@
+---
+repos:
+  - repo: local
+    hooks:
+      - id: generate-terraform-providers
+        name: generate-terraform-providers
+        require_serial: true
+        entry: bash -c 'find . -type f -name ".generate-providers.sh" -execdir bash {} \;'
+        language: system
+        files: ^.*\.tf(vars)?$
+        pass_filenames: false
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.99.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+        args:
+          - --args=--lockfile=false
+          - --hook-config=--retry-once-with-cleanup=true
+
+      - id: terraform_docs
+        args:
+          - --args=--sort-by required
+      - id: terraform_tflint
+        files: \.tf$
+        args:
+          - --args=--enable-rule=terraform_documented_variables
+          - --args=--enable-rule=terraform_unused_declarations
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-xml
+      - id: debug-statements
+      - id: detect-aws-credentials
+        args:
+          - --allow-missing-credentials
+      - id: detect-private-key
+      - id: end-of-file-fixer
+        exclude: files/(issue|motd)
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: pretty-format-json
+        args:
+          - --autofix
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+      - id: check-symlinks
+
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.24.3
+    hooks:
+      - id: gitleaks
+
+  # GitHub Actions hooks
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.33.0
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+
+  # pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit
+    rev: v4.2.0
+    hooks:
+      - id: validate_manifest

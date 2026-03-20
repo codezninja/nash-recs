@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Nashville Favorites</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --dark: #2C2418;
+      --warm: #A0785A;
+      --accent: #D4603A;
+      --muted: #8B7D6B;
+      --card: #FFFDF8;
+      --border: #E2D9CC;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Karla', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1.5rem 2.5rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 1.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 4rem;
+    }
+
+    .section {
+      margin-bottom: 2.2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header .emoji {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section li {
+      padding: 0.55rem 0 0.55rem 1.4rem;
+      position: relative;
+      font-size: 0.97rem;
+    }
+
+    .section li::before {
+      content: '\2022';
+      position: absolute;
+      left: 0.2rem;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .section li strong {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .section li .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    .map-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-left: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .map-link:hover {
+      text-decoration: underline;
+    }
+
+    .callout {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 3rem 1.2rem 2rem; }
+      .container { padding: 1rem 1.2rem 3rem; }
+      .section li { font-size: 0.94rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 id="page-title"></h1>
+    <p id="page-subtitle"></p>
+  </div>
+
+  <div class="container" id="content">
+    <div class="loading">Loading...</div>
+  </div>
+
+  <div class="footer" id="page-footer"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <script>
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function render(data) {
+      document.title = data.title || 'Nashville Favorites';
+      document.getElementById('page-title').textContent = data.title || '';
+      document.getElementById('page-subtitle').textContent = data.subtitle || '';
+      document.getElementById('page-footer').textContent = data.footer || '';
+
+      var container = document.getElementById('content');
+      container.innerHTML = '';
+
+      if (!data.sections) return;
+
+      data.sections.forEach(function(section) {
+        var div = document.createElement('div');
+        div.className = 'section';
+
+        var html = '<div class="section-header">';
+        html += '<span class="emoji">' + escapeHtml(section.emoji || '') + '</span>';
+        html += '<h2>' + escapeHtml(section.name) + '</h2>';
+        html += '</div>';
+
+        if (section.items && section.items.length) {
+          html += '<ul>';
+          section.items.forEach(function(item) {
+            html += '<li>';
+            html += '<strong>' + escapeHtml(item.title) + '</strong>';
+            if (item.map) {
+              html += '<a class="map-link" href="' + encodeURI(item.map) + '" target="_blank" rel="noopener">&#x1f4cd; Google</a>';
+            }
+            if (item.lat && item.lng) {
+              var appleUrl = 'https://maps.apple.com/?q=' + encodeURIComponent(item.title) + '&ll=' + item.lat + ',' + item.lng;
+              html += '<a class="map-link" href="' + appleUrl + '" target="_blank" rel="noopener">&#x1f34e; Apple</a>';
+            }
+            html += ' &mdash; ' + escapeHtml(item.description);
+            if (item.note) {
+              html += '<span class="note">' + escapeHtml(item.note) + '</span>';
+            }
+            html += '</li>';
+          });
+          html += '</ul>';
+        }
+
+        if (section.callout) {
+          html += '<div class="callout">' + escapeHtml(section.callout) + '</div>';
+        }
+
+        div.innerHTML = html;
+        container.appendChild(div);
+      });
+    }
+
+    fetch('data.yml')
+      .then(function(res) {
+        if (!res.ok) throw new Error('Could not load data.yml');
+        return res.text();
+      })
+      .then(function(text) {
+        var data = jsyaml.load(text);
+        render(data);
+      })
+      .catch(function(err) {
+        document.getElementById('content').innerHTML =
+          '<div class="loading">Could not load data.yml &mdash; make sure it is in the same directory as index.html</div>';
+        console.error(err);
+      });
+  </script>
+
+</body>
+</html>
