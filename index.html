@@ -14,10 +14,11 @@
       --muted: #8B7D6B;
       --card: #FFFDF8;
       --border: #E2D9CC;
-      --card-hover: #FFFBF3;
+      --sidebar-bg: #EDE8DF;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Karla', sans-serif;
@@ -27,9 +28,69 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* --- Sidebar (desktop) --- */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      padding: 2rem 0 1.5rem;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .sidebar-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--dark);
+      padding: 0 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--dark);
+      text-decoration: none;
+      transition: background 150ms ease;
+    }
+
+    .sidebar nav a:hover {
+      background: var(--border);
+    }
+
+    .sidebar nav a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .sidebar nav a .nav-emoji {
+      font-size: 1rem;
+      width: 1.2rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* --- Main content offset --- */
+    .main {
+      margin-left: 240px;
+    }
+
     .hero {
       text-align: center;
-      padding: 3.5rem 1.5rem 2rem;
+      padding: 3rem 1.5rem 1.5rem;
     }
 
     .hero h1 {
@@ -56,6 +117,7 @@
 
     .section {
       margin-bottom: 2rem;
+      scroll-margin-top: 1rem;
     }
 
     .section-header {
@@ -171,9 +233,65 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width: 480px) {
+    /* --- Mobile menu button --- */
+    .menu-btn {
+      display: none;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 30;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--card);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-btn svg {
+      width: 20px;
+      height: 20px;
+      color: var(--dark);
+    }
+
+    /* --- Mobile overlay --- */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 36, 24, 0.3);
+      z-index: 15;
+    }
+
+    .overlay.open {
+      display: block;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 200ms ease;
+        z-index: 20;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
       .hero {
-        padding: 2.5rem 1rem 1.5rem;
+        padding: 3.5rem 1rem 1.5rem;
       }
 
       .hero h1 {
@@ -213,21 +331,42 @@
       .section-header h2 {
         font-size: 1.15rem;
       }
+
+      .section {
+        scroll-margin-top: 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <h1 id="page-title"></h1>
-    <p id="page-subtitle"></p>
-  </div>
+  <button class="menu-btn" id="menu-btn" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="4" y1="7" x2="20" y2="7"/>
+      <line x1="4" y1="12" x2="20" y2="12"/>
+      <line x1="4" y1="17" x2="20" y2="17"/>
+    </svg>
+  </button>
 
-  <div class="container" id="content">
-    <div class="loading">Loading...</div>
-  </div>
+  <div class="overlay" id="overlay"></div>
 
-  <div class="footer" id="page-footer"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title" id="sidebar-title"></div>
+    <nav id="sidebar-nav"></nav>
+  </aside>
+
+  <div class="main">
+    <div class="hero">
+      <h1 id="page-title"></h1>
+      <p id="page-subtitle"></p>
+    </div>
+
+    <div class="container" id="content">
+      <div class="loading">Loading...</div>
+    </div>
+
+    <div class="footer" id="page-footer"></div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
   <script>
@@ -237,21 +376,77 @@
       return div.innerHTML;
     }
 
+    function slugify(str) {
+      return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+
+    // Mobile menu toggle
+    var menuBtn = document.getElementById('menu-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('overlay');
+
+    function openMenu() {
+      sidebar.classList.add('open');
+      overlay.classList.add('open');
+    }
+
+    function closeMenu() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    menuBtn.addEventListener('click', function() {
+      sidebar.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    // Scroll spy: highlight active section in sidebar
+    function updateActiveNav() {
+      var links = document.querySelectorAll('#sidebar-nav a');
+      var fromTop = window.scrollY + 60;
+      links.forEach(function(link) {
+        var section = document.querySelector(link.getAttribute('href'));
+        if (!section) return;
+        if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+
     function render(data) {
       document.title = data.title || 'Nashville Favorites';
       document.getElementById('page-title').textContent = data.title || '';
       document.getElementById('page-subtitle').textContent = data.subtitle || '';
       document.getElementById('page-footer').textContent = data.footer || '';
+      document.getElementById('sidebar-title').textContent = data.title || '';
 
       var container = document.getElementById('content');
       container.innerHTML = '';
 
+      var nav = document.getElementById('sidebar-nav');
+      nav.innerHTML = '';
+
       if (!data.sections) return;
 
       data.sections.forEach(function(section) {
+        var id = slugify(section.name);
         var div = document.createElement('div');
         div.className = 'section';
+        div.id = id;
 
+        // Sidebar nav link
+        var a = document.createElement('a');
+        a.href = '#' + id;
+        a.innerHTML = '<span class="nav-emoji">' + escapeHtml(section.emoji || '') + '</span>' + escapeHtml(section.name);
+        a.addEventListener('click', function() { closeMenu(); });
+        nav.appendChild(a);
+
+        // Section content
         var html = '<div class="section-header">';
         html += '<span class="emoji">' + escapeHtml(section.emoji || '') + '</span>';
         html += '<h2>' + escapeHtml(section.name) + '</h2>';
@@ -289,6 +484,8 @@
         div.innerHTML = html;
         container.appendChild(div);
       });
+
+      updateActiveNav();
     }
 
     fetch('data.yml')
