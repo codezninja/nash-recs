@@ -66,11 +66,6 @@ sections:
         map: https://www.google.com/maps/search/?api=1&query=Benji's+Bagel+Nashville+TN
         lat: 36.1490
         lng: -86.8570
-      - title: Cafe Babu
-        description: Indian inspired coffee and cocktail spot in Chestnut Hill. Masala chai, cardamom lattes, and fluffy pastries by day. Wine and cocktails Thursday through Saturday evenings. Beautiful space.
-        map: https://www.google.com/maps/search/?api=1&query=Cafe+Babu+Nashville+TN
-        lat: 36.1440
-        lng: -86.7780
       - title: Baja Burrito
         description: No frills build your own burrito shop in Berry Hill. Been around since 2000. Great fish tacos and barbacoa. Fast, cheap, and consistently solid.
         map: https://www.google.com/maps/search/?api=1&query=Baja+Burrito+Nashville+TN
@@ -105,6 +100,11 @@ sections:
         map: https://www.google.com/maps/search/?api=1&query=Elegy+Coffee+Nashville+TN
         lat: 36.1748
         lng: -86.7580
+      - title: Cafe Babu
+        description: Indian inspired coffee and cocktail spot in Chestnut Hill. Masala chai, cardamom lattes, and fluffy pastries by day. Wine and cocktails Thursday through Saturday evenings. Beautiful space.
+        map: https://www.google.com/maps/search/?api=1&query=Cafe+Babu+Nashville+TN
+        lat: 36.1440
+        lng: -86.7780
 
   - name: Drinks
     emoji: "🍸"
