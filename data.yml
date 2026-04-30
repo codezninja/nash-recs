@@ -138,6 +138,16 @@ sections:
         map: https://www.google.com/maps/search/?api=1&query=Radnor+Lake+State+Park+Nashville+TN
         lat: 36.0630
         lng: -86.8098
+      - title: Edwin Warner Park
+        description: Part of the Warner Parks complex (sister to Percy Warner). 600+ acres with paved and unpaved trails, picnic spots, a nature center, and the Little Harpeth River. Easier and more family friendly than Percy. About 20 min west of downtown.
+        map: https://www.google.com/maps/search/?api=1&query=Edwin+Warner+Park+Nashville+TN
+        lat: 36.0641
+        lng: -86.9036
+      - title: Beaman Park
+        description: 2,200+ acre park up in the northwest corner of Davidson County. Rugged hardwood forest with creeks and waterfalls. Hit the Creekside Trail Head for the prettiest hike along Henry Creek. Quieter than the in town parks, feels like a real escape.
+        map: https://www.google.com/maps/search/?api=1&query=Beaman+Park+Creekside+Trail+Head+Nashville+TN
+        lat: 36.2858
+        lng: -86.9415
 
   - name: Sightseeing
     emoji: "🏛️"
